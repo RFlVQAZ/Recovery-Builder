@@ -89,14 +89,14 @@ jobs:
               ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Install repo
-      run: |
+      run: 
         mkdir ~/bin
         curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
         chmod a+x ~/bin/repo
         sudo ln -sf ~/bin/repo /bin/repo
       
     - name: Initialize repo
-      run: |
+      run: 
         mkdir workspace
         cd workspace
         echo "workspace-folder=$(pwd)" >> $GITHUB_OUTPUT
@@ -106,7 +106,7 @@ jobs:
       id: pwd
           
     - name: Repo Sync
-      run: |
+      run: 
         repo sync -j$(nproc --all) --force-sync
       working-directory: workspace
       
